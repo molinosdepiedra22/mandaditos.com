@@ -10,29 +10,31 @@ pipeline {
             }
         }
 
-         stage('Instalar dependencias') {
+        stage('Instalar dependencias') {
             steps {
-                 bat 'C:\\Users\\dimcg\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe -m pip install -r requeriments.txt'
-    }
-}
+                bat 'C:\\Users\\dimcg\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe -m pip install -r requeriments.txt'
+            }
+        }
 
-    stage('Verificar configuracion Django') {
-        steps {
-             bat 'C:\\Users\\dimcg\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe manage.py check'
-    }
-}
+        stage('Verificar configuracion Django') {
+            steps {
+                bat 'C:\\Users\\dimcg\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe manage.py check'
+            }
+        }
 
-    stage('Aplicar migraciones') {
-    steps {
-        bat 'C:\\Users\\dimcg\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe manage.py migrate --noinput'
-    }
-}
+        stage('Aplicar migraciones') {
+            steps {
+                bat 'C:\\Users\\dimcg\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe manage.py migrate --noinput'
+            }
+        }
 
-|   stage('Ejecutar pruebas') {
-    steps {
-        bat 'C:\\Users\\dimcg\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe manage.py test pedidos --verbosity=2'
+        stage('Ejecutar pruebas') {
+            steps {
+                bat 'C:\\Users\\dimcg\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe manage.py test pedidos --verbosity=2'
+            }
+        }
+
     }
-}
 
     post {
         success {
