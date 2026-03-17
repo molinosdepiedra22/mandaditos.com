@@ -89,24 +89,69 @@ def gestionar_propina(request, pk):
 
 # ELIMINAR 
 def eliminar_cliente(request, pk):
-    pass
+    cliente = get_object_or_404(Cliente, pk=pk)
+    if request.method == 'POST':
+        cliente.delete()
+        messages.success(request, 'Cliente eliminado correctamente.')
+        # Redirigimos a registrar porque no veo una vista de "lista", pero puedes cambiarlo a tu gusto
+        return redirect('registrar_cliente') 
+    return render(request, 'pedidos/eliminar.html', {'titulo': 'Eliminar Cliente', 'objeto': cliente})
 
 def eliminar_restaurante(request, pk):
-    pass
+    restaurante = get_object_or_404(Restaurante, pk=pk)
+    if request.method == 'POST':
+        restaurante.delete()
+        messages.success(request, 'Restaurante eliminado correctamente.')
+        return redirect('registrar_restaurante')
+    return render(request, 'pedidos/eliminar.html', {'titulo': 'Eliminar Restaurante', 'objeto': restaurante})
 
 def eliminar_repartidor(request, pk):
-    pass
+    repartidor = get_object_or_404(Repartidor, pk=pk)
+    if request.method == 'POST':
+        repartidor.delete()
+        messages.success(request, 'Repartidor eliminado correctamente.')
+        return redirect('registrar_repartidor')
+    return render(request, 'pedidos/eliminar.html', {'titulo': 'Eliminar Repartidor', 'objeto': repartidor})
 
 def eliminar_pedido(request, pk):
-    pass
+    pedido = get_object_or_404(Pedido, pk=pk)
+    if request.method == 'POST':
+        pedido.delete()
+        messages.success(request, 'Pedido eliminado correctamente.')
+        return redirect('registrar_pedido')
+    return render(request, 'pedidos/eliminar.html', {'titulo': 'Eliminar Pedido', 'objeto': pedido})
 
 
 # RATING
 def rating_cliente(request, pk):
-    pass
+    cliente = get_object_or_404(Cliente, pk=pk)
+    if request.method == 'POST':
+        nuevo_rating = request.POST.get('rating')
+        if nuevo_rating:
+            cliente.rating = int(nuevo_rating)
+            cliente.save()
+            messages.success(request, 'Calificación del cliente guardada.')
+            return redirect('editar_cliente', pk=pk)
+    return render(request, 'pedidos/rating.html', {'titulo': 'Calificar Cliente', 'objeto': cliente})
 
 def rating_restaurante(request, pk):
-    pass
+    restaurante = get_object_or_404(Restaurante, pk=pk)
+    if request.method == 'POST':
+        nuevo_rating = request.POST.get('rating')
+        if nuevo_rating:
+            restaurante.rating = int(nuevo_rating)
+            restaurante.save()
+            messages.success(request, 'Calificación del restaurante guardada.')
+            return redirect('editar_restaurante', pk=pk)
+    return render(request, 'pedidos/rating.html', {'titulo': 'Calificar Restaurante', 'objeto': restaurante})
 
 def rating_repartidor(request, pk):
-    pass
+    repartidor = get_object_or_404(Repartidor, pk=pk)
+    if request.method == 'POST':
+        nuevo_rating = request.POST.get('rating')
+        if nuevo_rating:
+            repartidor.rating = int(nuevo_rating)
+            repartidor.save()
+            messages.success(request, 'Calificación del repartidor guardada.')
+            return redirect('editar_repartidor', pk=pk)
+    return render(request, 'pedidos/rating.html', {'titulo': 'Calificar Repartidor', 'objeto': repartidor})
