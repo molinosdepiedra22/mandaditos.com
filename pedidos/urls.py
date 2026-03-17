@@ -21,15 +21,14 @@ urlpatterns = [
     # PROPINAS
     path('pedidos/<int:pk>/propina/', views.gestionar_propina, name='gestionar_propina'),
 
-    # ELIMINAR
-    path('clientes/<int:pk>/eliminar/',     views.eliminar_cliente,     name='eliminar_cliente'),
-    path('restaurantes/<int:pk>/eliminar/', views.eliminar_restaurante, name='eliminar_restaurante'),
-    path('repartidores/<int:pk>/eliminar/', views.eliminar_repartidor,  name='eliminar_repartidor'),
-    path('pedidos/<int:pk>/eliminar/',      views.eliminar_pedido,      name='eliminar_pedido'),
+   # --- RUTAS PARA ELIMINAR ---
+    path('eliminar/cliente/<int:pk>/', views.eliminar_cliente, name='eliminar_cliente'),
+    path('eliminar/restaurante/<int:pk>/', views.eliminar_restaurante, name='eliminar_restaurante'),
+    path('eliminar/repartidor/<int:pk>/', views.eliminar_repartidor, name='eliminar_repartidor'),
+    path('eliminar/pedido/<int:pk>/', views.eliminar_pedido, name='eliminar_pedido'),
 
-    # RATING 
-    path('clientes/<int:pk>/rating/',     views.rating_cliente,     name='rating_cliente'),
-    path('restaurantes/<int:pk>/rating/', views.rating_restaurante, name='rating_restaurante'),
-    path('repartidores/<int:pk>/rating/', views.rating_repartidor,  name='rating_repartidor'),
-
+    # --- RUTAS PARA RATING ---
+    path('rating/cliente/<int:pk>/', views.rating_cliente, name='rating_cliente'),
+    path('rating/restaurante/<int:pk>/', views.rating_restaurante, name='rating_restaurante'),
+    path('rating/repartidor/<int:pk>/', views.rating_repartidor, name='rating_repartidor'),
 ]
