@@ -3,6 +3,9 @@ from . import views
 
 urlpatterns = [
 
+    #Home pag Principal
+    path('', views.home, name='home'),
+
     # REGISTRAR
     path('clientes/nuevo/',      views.registrar_cliente,     name='registrar_cliente'),
     path('restaurantes/nuevo/',  views.registrar_restaurante, name='registrar_restaurante'),
@@ -22,10 +25,10 @@ urlpatterns = [
     path('pedidos/<int:pk>/propina/', views.gestionar_propina, name='gestionar_propina'),
 
    # --- RUTAS PARA ELIMINAR ---
-    path('eliminar/cliente/<int:pk>/', views.eliminar_cliente, name='eliminar_cliente'),
-    path('eliminar/restaurante/<int:pk>/', views.eliminar_restaurante, name='eliminar_restaurante'),
-    path('eliminar/repartidor/<int:pk>/', views.eliminar_repartidor, name='eliminar_repartidor'),
-    path('eliminar/pedido/<int:pk>/', views.eliminar_pedido, name='eliminar_pedido'),
+    path('clientes/<int:pk>/eliminar/', views.eliminar_cliente, name='eliminar_cliente'),
+    path('restaurantes/<int:pk>/eliminar/', views.eliminar_restaurante, name='eliminar_restaurante'),
+    path('repartidores/<int:pk>/eliminar/', views.eliminar_repartidor, name='eliminar_repartidor'),
+    path('pedidos/<int:pk>/eliminar/', views.eliminar_pedido, name='eliminar_pedido'),
 
     # --- RUTAS PARA RATING ---
     path('rating/cliente/<int:pk>/', views.rating_cliente, name='rating_cliente'),

@@ -3,25 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ titulo }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'pedidos/css/styles.css' %}">
 </head>
 <body>
     <h1>{{ titulo }}</h1>
-    
+
     <p>Estás calificando a: <strong>{{ objeto }}</strong></p>
 
     <form method="POST">
         {% csrf_token %}
-        <label for="rating">Selecciona una calificación (1 al 5):</label>
-        <select name="rating" id="rating" required>
-            <option value="">-- Elige --</option>
-            <option value="1">1 Estrella ⭐</option>
-            <option value="2">2 Estrellas ⭐⭐</option>
-            <option value="3">3 Estrellas ⭐⭐⭐</option>
-            <option value="4">4 Estrellas ⭐⭐⭐⭐</option>
-            <option value="5">5 Estrellas ⭐⭐⭐⭐⭐</option>
-        </select>
-        <br><br>
-        <button type="submit" style="background-color: green; color: white;">Guardar Calificación</button>
+        <div class="form-group">
+            <label for="rating">Selecciona una calificación (1 al 5):</label>
+            <select name="rating" id="rating" required>
+                <option value="">-- Elige --</option>
+                <option value="1">1 Estrella ⭐</option>
+                <option value="2">2 Estrellas ⭐⭐</option>
+                <option value="3">3 Estrellas ⭐⭐⭐</option>
+                <option value="4">4 Estrellas ⭐⭐⭐⭐</option>
+                <option value="5">5 Estrellas ⭐⭐⭐⭐⭐</option>
+            </select>
+        </div>
+        <button type="submit" class="btn-guardar">Guardar Calificación</button>
         <a href="javascript:history.back()">Cancelar</a>
     </form>
 </body>
