@@ -3,18 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ titulo }}</title>
-    <style>
-        body { font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto; padding: 0 20px; }
-        h1 { color: #333; border-bottom: 2px solid #e74c3c; padding-bottom: 10px; }
-        .form-group { margin-bottom: 15px; }
-        label { display: block; font-weight: bold; margin-bottom: 5px; color: #555; }
-        input, select, textarea { width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; }
-        .btn { background: #e74c3c; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
-        .btn:hover { background: #c0392b; }
-        .btn-cancelar { background: #95a5a6; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; margin-left: 10px; }
-        .messages { background: #d4edda; border: 1px solid #c3e6cb; padding: 10px; border-radius: 4px; margin-bottom: 15px; color: #155724; }
-        .objeto-info { background: #f8f9fa; border-left: 4px solid #e74c3c; padding: 10px; margin-bottom: 20px; color: #666; }
-    </style>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'pedidos/css/styles.css' %}">
 </head>
 <body>
     <h1>{{ titulo }}</h1>

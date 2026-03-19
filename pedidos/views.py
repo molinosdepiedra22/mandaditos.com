@@ -3,6 +3,9 @@ from django.contrib import messages
 from .models import Cliente, Restaurante, Repartidor, Pedido
 from .forms import ClienteForm, RestauranteForm, RepartidorForm, PedidoForm
 
+#Home / pag Principal
+def home(request):
+    return render(request, 'pedidos/home.html')
 
 # REGISTRAR
 def registrar_cliente(request):
